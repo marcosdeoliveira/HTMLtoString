@@ -1,0 +1,102 @@
+<!-- 
+	That's a simple code that I made for learn a little bit about HTML<!DOCTYPE html
+	This code just converts each line of a HTML code to a 'string' format
+	72bf44
+	986987
+>-->
+
+<html>
+	<style>
+		body{
+			background-color:#F1F8E9;
+		}
+		h1{
+			color:#FFFFFF; font-family:verdana; text-align:justify; font-size:xx-large;
+		}
+		h2{
+			color:#FFFFFF;font-family:verdana;text-align:justify;font-size:large;
+		}
+		#projectTitleColors{
+			background-color:#4CAF50;position: relative; /*top: 1%*/;width:100%;padding-top: 1em;padding-bottom: 1em; 
+		}
+		#projectTitle{
+			color:#F1F8E9; font-family:verdana; text-align:center; font-size:260%;
+		}
+		
+		#welcome{
+			background-color: #FF8A65;padding-top: 1em;padding-bottom: 1em;padding-left: 10%;position: relative;width: 90%;margin: 0 auto; margin-top: 1%;
+		}
+		#inputcodeArea{
+			background-color: #FF8A65;padding-top: 1em;padding-bottom: 1em;padding-left: 10%;position: relative;width: 90%;margin: 0 auto; margin-top: 1%;
+		}
+		#outputcode{
+			color:#E8F5E9;font-family:verdana;text-align:justify;font-size:medium;
+		}
+		#convertButton{
+		    color: #FFFFFF;background-color: #4CAF50;border-style: outset; border-color: #4CAF50; border-radius: 6px;
+		}
+		
+	</style>
+	<head>
+		<title>
+		HTML to String | To lazy people.
+		</title> 
+	</head>
+	<body >
+		<div id = "projectTitleColors">
+			<h1 id="projectTitle">
+			HTML to String
+			</h1>
+		</div>
+		<div id="welcome">
+			<h1>Hello, lazy programmer!</h1>
+			<h2>That's a simple converter from HTML to String made by a lazy</h2>
+			<h2>guy that had problems in work offline with an ESP8266.</h2>
+			<h2>To use it, you just need to insert your HTML code and press a button.</h2>
+			<h2>That's all...enjoy it! ;)</h2>			
+		</div>
+		<div id="inputcodeArea">
+			<h1>
+				Here!Just paste your code: 
+			</h1>
+			<h2 style="font-size:80%">
+				be careful with longer lines
+			</h2>
+			<h2>
+				<form id="inputform">
+					<textarea id = "textarea"rows="4" cols="50" name="textareaInput" value ="" ><!DOCTYPE html>...</textarea>
+				</form>
+				<input id= convertButton type="button" value="Convert" onclick="converter()">				
+			</h2>
+			<h2 id="outputcode"> </h2> 
+		</div>
+		<script>
+			function converter() {
+				// read the code that will be converted 
+				var inputText = document.getElementById("inputform").textareaInput.value;
+				// necessary for convert to 'string' format 
+				inputText = inputText.replace(/\"/g,'\\"');
+				// divides each line of input code 
+				var splitText = inputText.split('\n');
+				var outputText="";
+				// generates the output text on the right format
+				for (element in splitText){
+					outputText+='\"';
+					outputText+=splitText[element];
+					outputText+='\"';
+					outputText+='\n'
+				} 
+				//shows the result
+				document.getElementById("outputcode").innerText = "That's right?!\n" + outputText ; 
+
+				// just a debug
+				// window.alert(outputText);
+				// failed on the tests
+				// document.getElementById("outputcode").innerHTML = "Was inputed<: "+ outputText + ">Right!?";
+				// document.getElementById("outputcode").textContent = "Was inputed<: "+ outputText + ">Right!?";
+		}
+		</script>
+	</body>
+</html>
+
+
